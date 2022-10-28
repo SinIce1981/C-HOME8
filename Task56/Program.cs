@@ -13,7 +13,8 @@ void Zadacha56()
     PrintArray(numbers);
 
     Console.WriteLine();
-
+    SumMinimum(numbers);
+    
     for (int i = 0; i < rows; i++)
     {
         int sum = 0;
@@ -61,6 +62,26 @@ void PrintArray(int[,] numbers)
 
     }
 }
-
+void SumMinimum(int[,] numbers)
+{
+    int minRow = 0;
+    int minSumRow = 0;
+    int sumRow = 0;
+    for (int i = 0; i < numbers.GetLength(1); i++)
+    {
+        minRow += numbers[0, i];
+    }
+    for (int i = 0; i < numbers.GetLength(0); i++)
+    {
+        for (int j = 0; j < numbers.GetLength(1); j++) sumRow += numbers[i, j];
+        if (sumRow < minRow)
+        {
+            minRow = sumRow;
+            minSumRow = i;
+        }
+        sumRow = 0;
+    }
+    Console.WriteLine($"{minSumRow + 1} строка с наименьшей суммой элементов");
+}
 
 Zadacha56();
